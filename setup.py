@@ -22,7 +22,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.1',
+    version='0.1.1',
 
     description='A collection of tools and utilities commonly for python projects.',
     long_description=long_description,
@@ -82,13 +82,42 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-        'pyparsing>=2.2.0',
-        'boto3>=1.5.22',
+        'asgiref>=3.2.3',
+        'bleach>=3.1.0',
+        'blessings>=1.7',
+        'boto3>=1.7.4',
+        'botocore>=1.10.4',
+        'bpython>=0.18',
+        'Cerberus>=1.3.2',
+        'certifi>=2019.11.28',
+        'chardet>=3.0.4',
+        'curtsies>=0.3.1',
+        'docutils>=0.14',
+        'greenlet>=0.4.15',
+        'idna>=2.8',
+        'importlib-metadata>=1.5.0',
+        'jmespath>=0.9.3',
+        'keyring>=21.1.0',
+        'pkginfo>=1.5.0.1',
+        'Pygments>=2.5.2',
+        'pyparsing>=2.4.6',
         'python-dateutil>=2.6.1',
-        'PyYAML>=3.12',
-        'requests>=2.18.4',
-        'Cerberus>=1.2'
-        ],  # example> ['boto3==1.5.22',]
+        'pytz>=2019.3',
+        'PyYAML>=5.3',
+        'readme-renderer>=24.0',
+        'requests>=2.22.0',
+        'requests-toolbelt>=0.9.1',
+        'rollbar>=0.14.7',
+        's3transfer>=0.1.13',
+        'six>=1.14.0',
+        'sqlparse>=0.3.0',
+        'tqdm>=4.42.1',
+        'twine>=3.1.1',
+        'urllib3>=1.25.8',
+        'wcwidth>=0.1.8',
+        'webencodings>=0.5.1',
+        'zipp>=2.1.0'
+    ],  # example> ['boto3==1.5.22',]
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
