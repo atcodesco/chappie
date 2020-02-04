@@ -1,11 +1,11 @@
 README.rst
 setup.py
+atcodes_chappie.egg-info/PKG-INFO
+atcodes_chappie.egg-info/SOURCES.txt
+atcodes_chappie.egg-info/dependency_links.txt
+atcodes_chappie.egg-info/requires.txt
+atcodes_chappie.egg-info/top_level.txt
 chappie/__init__.py
-chappie.egg-info/PKG-INFO
-chappie.egg-info/SOURCES.txt
-chappie.egg-info/dependency_links.txt
-chappie.egg-info/requires.txt
-chappie.egg-info/top_level.txt
 chappie/client/__init__.py
 chappie/client/file_manager.py
 chappie/client/log_notifier.py

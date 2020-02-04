@@ -24,17 +24,22 @@ class LocalClient():
             file.write(file_data)
             file.close()
 
-        params_dict['Filename'] = os.path.join(self.bucket, path, filename)
-        return params_dict
+        # params_dict['Filename'] = os.path.join(self.bucket, path, filename)
+        return_params_dict = params_dict.copy()
+        return_params_dict['Bucket'] = self.bucket
+        return_params_dict['Key'] = '%s/%s' % (path, filename)
+        return return_params_dict
 
     def download_file(self, params_dict):
         """ Return file data as a Bytes array"""
-        filename = os.path.join('file_manager', params_dict.get('Filename'))
+        filename = params_dict.get('Key')
+        bucket = params_dict.get('Bucket')
+        abs_path = os.path.join(self.base_dir, 'file_manager', bucket, filename)
 
         file_data = b''
         if filename:
             try:
-                with open(filename, 'rb') as file:
+                with open(abs_path, 'rb') as file:
                     # if file.exists():
                     file_data = file.read()
                     file.close()
@@ -45,8 +50,9 @@ class LocalClient():
 
     def get_url(self, params_dict):
         """ Return local file as a url resource"""
-        filename = params_dict.get('Filename')
-        abs_path = os.path.join(self.base_dir, 'file_manager', filename)
+        filename = params_dict.get('Key')
+        bucket = params_dict.get('Bucket')
+        abs_path = os.path.join(self.base_dir, 'file_manager', bucket, filename)
         url = ''
         if filename:
             url = pathlib.Path(abs_path).as_uri()
@@ -55,15 +61,16 @@ class LocalClient():
 
     def delete_file(self, params_dict):
         """ Delete file """
-        filename = params_dict.get('Filename')
-        abs_path = os.path.join(self.base_dir, 'file_manager', filename)
+        filename = params_dict.get('Key')
+        bucket = params_dict.get('Bucket')
+        abs_path = os.path.join(self.base_dir, 'file_manager', bucket, filename)
         master_bucket = os.path.join(self.base_dir, 'file_manager', self.bucket)
         file_path = os.path.dirname(abs_path)
 
         if filename is not None:
             try:
                 os.remove(abs_path)
-                params_dict["Filename"] = ""
+                params_dict["Key"] = ""
 
                 # delete subfolders if they are empty
                 for root, dirs, files in os.walk(master_bucket, topdown=False):
@@ -81,7 +88,7 @@ class LocalClient():
             except OSError:  ## if failed, report it back to the user ##
                 return params_dict
         else:
-            params_dict["Filename"] = ""
+            params_dict["Key"] = ""
             return params_dict
 
     def create_bucket(self, bucket_name):

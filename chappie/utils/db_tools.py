@@ -4,7 +4,7 @@ from functools import wraps
 
 try:
     from django.db import transaction
-except exception as e:
+except Exception as e:
     print(e)
 
 

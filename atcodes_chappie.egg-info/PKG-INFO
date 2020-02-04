@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
-Name: chappie
-Version: 0.1
+Name: atcodes-chappie
+Version: 0.1.1
 Summary: A collection of tools and utilities commonly for python projects.
-Home-page: UNKNOWN
+Home-page: https://github.com/atcodesco/chappie/
 Author: ATCODES Dev Team
 Author-email: admin@atcodes.co
 License: MIT

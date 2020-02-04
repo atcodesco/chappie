@@ -2,9 +2,6 @@ import os
 import errno
 
 
-from django.conf import settings
-
-
 from chappie.client.aws import S3Client
 from chappie.client.local import LocalClient
 from chappie.utils.random_value import RandomValue
@@ -39,10 +36,7 @@ class FileManager():
         else:
             self.client.bucket = self.bucket
 
-        try:
-            self.client.base_dir = settings.BASE_DIR
-        except Exception as e:
-            self.client.base_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(__file__)), '..'))
+        self.client.base_dir = os.environ.get('CHAPPIE_BASE_PROJECT_DIR', os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(__file__)), '..')))
 
         if self.storage_service == "local":
             try:
