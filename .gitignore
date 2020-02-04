@@ -7,3 +7,4 @@ build/
 dist/
 file_manager/
 file_manager/*
+*/__pycache__
