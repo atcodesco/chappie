@@ -102,3 +102,15 @@ class LocalClient():
             raise e
 
         return full_path
+
+    def put_object(self, key):
+        """ Put a key into a Bucket. """
+        abs_path = os.path.join(self.base_dir, 'file_manager', self.bucket, key)
+        if not os.path.exists(abs_path):
+            try:
+                os.makedirs(abs_path)
+            except OSError as e:
+                if e.errno != errno.EEXIST:
+                    raise e
+
+        return abs_path

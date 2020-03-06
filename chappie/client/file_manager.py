@@ -102,3 +102,11 @@ class FileManager():
         return value: path to new created bucket
         """
         return self.client.create_bucket(bucket_name)
+
+    def put_object(self, key):
+        """
+        Create a Key object inside a Bucket
+        Input: Key
+        return value: path to new created object
+        """
+        return self.client.put_object(key)

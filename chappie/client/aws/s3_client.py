@@ -104,3 +104,13 @@ class S3Client():
         except Exception as e:
             print(e)
             return False
+
+
+    def put_object(self, key):
+        """ Put a key into a Bucket. """
+        try:
+            self.client.put_object(Bucket=self.bucket, Key=key,)
+        except Exception as e:
+            return False
+
+        return key
